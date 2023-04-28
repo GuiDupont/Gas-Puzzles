@@ -1,3 +1,16 @@
+This repository containes my solution to the gas puzzles proposed by RareSkills. 
+
+- [x] Distribute
+- [x] Array Sum
+- [x] Array Sort
+- [ ] Mint150
+- [ ] ERC165 on going
+- [ ] Vote
+- [ ] Require
+
+You will find explanations in each exercise file.
+
+------------------------------------------------------------------------------------------------------------------------------------
 # [RareSkills](https://rareskills.io) Gas Puzzles
 
 If you want to learn about gas optimization, take the [Udemy gas optimization course](https://www.udemy.com/course/advanced-solidity-understanding-and-optimizing-gas-costs/?referralCode=C4684D6872713525E349)!
@@ -16,10 +29,6 @@ If you want to learn about gas optimization, take the [Udemy gas optimization co
 - [x] Require (easy)
 - [ ] Staking
 
-## Contributors
-
-DO NOT COMMIT SOLUTIONS, BE SURE TO PUT ANSWERS IN `contracts/contracts_optimized` to ensure they fall into the `.gitignore`
-
 ## Players
 
 Your goal is to optimize the contracts such that they reach the target efficiency.
@@ -34,9 +43,6 @@ Rules
 -   because making functions `payable` is a controversial optimization, you do not need to make functions `payable` to reach the gas target unless the function needs to be payable to fulfill its business logic
 
 ## Testing
-
-As mentioned above, optimized contracts should be created in their own sub-folder
-to prevent commiting them publicly.
 
 The file structure should look similar to this:
 
