@@ -4,6 +4,8 @@ pragma solidity 0.8.15;
 import '@openzeppelin/contracts/utils/introspection/ERC165.sol';
 import '@openzeppelin/contracts/token/ERC721/ERC721.sol';
 
+import 'hardhat/console.sol';
+
 contract Award is ERC721 {
     constructor() ERC721('Award', 'A') {
         _mint(msg.sender, 1337);
@@ -16,7 +18,7 @@ contract Award is ERC721 {
 // protocol. Don't copy this code for production applications.
 
 contract NFTGiver {
-    uint256 public constant GAS_LIMIT = 46;
+    uint256 public constant GAS_LIMIT = 44;
     struct Game {
         bool success1;
         bool success2;
@@ -38,21 +40,19 @@ contract NFTGiver {
         order = _order;
     }
 
-    function _supportsInterface(ERC165 target, bytes4 _interface)
-        public
-        view
-        returns (bool)
-    {
+    function _supportsInterface(
+        ERC165 target,
+        bytes4 _interface
+    ) public view returns (bool) {
         return target.supportsInterface{gas: GAS_LIMIT}(_interface);
     }
 
     function challenge1(ERC165 target) external {
-        require(_supportsInterface(target, ERC1155Reciever));
-        require(!_supportsInterface(target, ERC1363Reciever));
-        require(!_supportsInterface(target, ERCRareReciever));
-        require(!_supportsInterface(target, ERCBadReceiver));
+        require(_supportsInterface(target, ERC1155Reciever), '1');
+        require(!_supportsInterface(target, ERC1363Reciever), '2');
+        require(!_supportsInterface(target, ERCRareReciever), '3');
+        require(!_supportsInterface(target, ERCBadReceiver), '4');
         passedChallenge[target].success1 = true;
-
         require(order[order.length - 1] == 1);
         order.pop();
     }
@@ -62,7 +62,6 @@ contract NFTGiver {
         require(_supportsInterface(target, ERC1363Reciever));
         require(!_supportsInterface(target, ERCRareReciever));
         require(!_supportsInterface(target, ERCBadReceiver));
-
         require(order[order.length - 1] == 2);
         order.pop();
 
