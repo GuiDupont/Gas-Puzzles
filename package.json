@@ -11,7 +11,8 @@
         "typechain": "^8.1.1"
     },
     "dependencies": {
-        "ethers": "^6.3.0",
+        "dotenv": "^16.0.3",
+        "ethers": "^5.7.0",
         "hardhat-console": "^1.0.0"
     }
 }
